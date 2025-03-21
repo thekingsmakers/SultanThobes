@@ -121,7 +121,18 @@
     </main>
     <footer class="bg-primary text-white py-12">
         <div class="container mx-auto px-4">
-            <p class="text-gray-300 text-center">&copy; 2025 Sultan Thobes. All rights reserved.</p>
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+                    <div>
+                        <p class="text-gray-300"><i class="ri-map-pin-line"></i> Location: Nairobi, Kenya</p>
+                        <a href="https://wa.me/254769199053" target="_blank" class="text-gray-300 hover:text-white">
+                            <i class="ri-whatsapp-line"></i> WhatsApp: +254 769 199 053
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <p class="text-gray-300 text-center border-t border-gray-700 pt-8">&copy; 2025 Sultan Thobes. All rights reserved.</p>
         </div>
     </footer>
     <script>
@@ -137,7 +148,7 @@
         const message = `Hello! I would like to book an appointment:\n\nName: ${name}\nPhone: ${phone}\nDate: ${date}\nTime: ${time}\nNotes: ${notes}`;
         
         // WhatsApp phone number
-        const phoneNumber = '97466193646';
+        const phoneNumber = '254769199053';
         
         // Create WhatsApp URL
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;

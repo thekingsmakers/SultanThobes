@@ -90,6 +90,12 @@ class CartManager {
                         <span class="font-semibold">Total:</span>
                         <span class="text-primary font-bold">$${totalPrice.toFixed(2)}</span>
                     </div>
+                    <form id="checkout-form" class="mb-4">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Your Name</label>
+                            <input type="text" id="customer-name" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+                        </div>
+                    </form>
                     <button id="checkout-button" class="w-full bg-primary text-white py-3 rounded-button hover:bg-opacity-90 transition">
                         Proceed to Checkout
                     </button>
@@ -123,8 +129,24 @@ class CartManager {
 
         if (document.getElementById('checkout-button')) {
             document.getElementById('checkout-button').addEventListener('click', () => {
-                // Add checkout functionality here
-                this.showNotification('Proceeding to checkout...');
+                const customerName = document.getElementById('customer-name').value;
+                if (!customerName) {
+                    alert('Please enter your name to proceed.');
+                    return;
+                }
+
+                let message = `Hello! I would like to place an order:\n\n`;
+                message += `Customer Name: ${customerName}\n\n`;
+                message += `Order Details:\n`;
+                this.cart.forEach(item => {
+                    message += `\n- ${item.name}\n  Price: $${item.price}\n  Description: ${item.description}\n`;
+                });
+                message += `\nTotal Amount: $${totalPrice.toFixed(2)}`;
+                message += `\n\nShipping Address: Nairobi, Kenya`;
+                
+                const phoneNumber = '254769199053';
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
             });
         }
     }
